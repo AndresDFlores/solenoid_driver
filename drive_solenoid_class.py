@@ -1,5 +1,6 @@
 from machine import Pin
 
+
 class DriveSolenoid:
     
     def __init__(self, pin:int):       
