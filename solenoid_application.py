@@ -18,7 +18,7 @@ class SolenoidApplication(SolenoidManager):
     def __init__(self):
         
         #  initialize solenoid pin
-        self.vend_solenoid = SolenoidManager(pin=self._solenoid_pin)
+        self.solenoid_class = SolenoidManager(pin=self._solenoid_pin)
         
         #  initialize button instances for the engage and disengage parameters
         self.engage_button = ButtonPress(pin=self._engage_button_pin)
@@ -41,8 +41,8 @@ class SolenoidApplication(SolenoidManager):
                 
             
             #  command solenoid state
-            self.vend_solenoid.set_engage_flag(pin_state)
-            self.vend_solenoid.drive_solenoid()
+            self.solenoid_class.set_engage_flag(pin_state)
+            self.solenoid_class.drive_solenoid()
             
 
             #  if solenoid is engaged, begin disengage protocol
@@ -60,8 +60,8 @@ class SolenoidApplication(SolenoidManager):
                     #  if disengage button state is 0 or the engage timeout is exceeded, disengage solenoid
                     #  engage timeout is a safety parameter to ensure that the solenoid does not burn out with an extended hold time
                     if disengage_button_state==0 or seconds_elapsed>=self._solenoid_engage_timeout:
-                        self.vend_solenoid.set_engage_flag(False)
-                        self.vend_solenoid.drive_solenoid()
+                        self.solenoid_class.set_engage_flag(False)
+                        self.solenoid_class.drive_solenoid()
                         break
 
 
