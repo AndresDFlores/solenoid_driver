@@ -4,7 +4,7 @@ import time
 
 #  define test parameters
 solenoid_pin = 0  # raspberry pi pico W
-cycles_count = 100
+cycles_count = 130
 seconds_per_engage_cycle = 15
 seconds_per_disengage_cycle = 10
 continuous_load_seconds = 30
